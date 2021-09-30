@@ -5,19 +5,21 @@ namespace Depositer
 {
     class DepositeAmount
     {
-        public void Deposite(List<BankDetails> Details,int Amount,int UserPin)
+        public void Deposit(List<BankDetails> Details,int Amount,int UserPin,string UserName) // Depositing Amount into the Account.
         {
             foreach(BankDetails i in Details)
             {
-                if(i.PIN==UserPin){
-                    i.AmountAvailable+=Amount;
+                if(i.PIN==UserPin){ // Checking if the userPin is available in the BankDetails dictionary or not.
+                    i.AmountAvailable+=Amount; // Updating the available amount in the account.
                     break;
                 }
             }
-            Console.WriteLine("Amount has been Debitted in your Account");
+            Console.WriteLine("\n -------------------------------------------");
+            Console.WriteLine("| "+ Amount +" has been Debitted in your Account |".ToUpper());
+            Console.WriteLine(" -------------------------------------------\n");
             Log.TransactionLog log=new Log.TransactionLog();
-            string description="Deposite";
-            log.Adder(description,Amount);
+            string description="Deposited from "+UserName.ToUpper();
+            log.Adder(description,Amount); // Adding the Deposit
         }
     }
 }

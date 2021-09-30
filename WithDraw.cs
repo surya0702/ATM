@@ -5,22 +5,24 @@ namespace WithDrawer
 {
     class WithDrawAmount
     {
-        public void WithDraw(List<BankDetails> Details,int Amount,int UserPin)
+        public void WithDraw(List<BankDetails> Details,int Amount,int UserPin,string UserName) // To Withdraw the Amount.
         {
-            foreach(BankDetails i in Details)
+            foreach(BankDetails i in Details) // Traversing the Bank Details Dictionary.
             {
-                if(i.PIN==UserPin){
-                    if(i.AmountAvailable<Amount)
+                if(i.PIN==UserPin){ // Checking if the userPin is available or not in the BankDetails Dictionary
+                    if(i.AmountAvailable<Amount) // If the available amount is less the withdraw amount.
                     {
-                        Console.WriteLine("Insufficient Balance!");
+                        Console.WriteLine("\nInsufficient Balance!".ToUpper());
                     }
-                    else
+                    else 
                     {
                         i.AmountAvailable-=Amount;
                         Log.TransactionLog log=new Log.TransactionLog();
-                        string description="WithDraw";
-                        log.Adder(description,Amount);
-                        Console.WriteLine("Amount has been WithDrawn from your Account");
+                        string description="WithDraw from "+UserName.ToUpper();
+                        log.Adder(description,Amount); // Adding the withdrawl into Transaction Log.
+                        Console.WriteLine("\n --------------------------------------------");
+                        Console.WriteLine("| "+Amount+" has been WithDrawn from your Account".ToUpper()+" |");
+                        Console.WriteLine(" --------------------------------------------\n");
                     }
                     break;
                 }

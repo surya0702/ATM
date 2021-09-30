@@ -7,13 +7,16 @@ namespace Log
     {
         public static Dictionary<string,int> log=new Dictionary<string, int>();
 
-        public void Adder(string description,int amount){
+        public void Adder(string description,int amount){ // Adds a new Transaction into the Log Dictionary.
             log.Add(description,amount);
         }
-        public void LogPrinter()
+        public void LogPrinter() // Prints the Log Dictionary
         {
+            Console.WriteLine("\n -------------------");
+            Console.WriteLine("| Transaction Log   |".ToUpper());
+            Console.WriteLine(" -------------------\n");
             foreach(KeyValuePair<string,int> i in log){
-                Console.WriteLine(i.Key+" "+i.Value);
+                Console.WriteLine(i.Value+"\t"+i.Key);
             }
         }
     }

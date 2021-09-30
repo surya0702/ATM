@@ -5,17 +5,27 @@ namespace Account
 {
     class AccountCreator
     {
-        public void Creator(List<BankDetails> l)
+        public void Creator(List<BankDetails> l,List<int> pins)
         {
             string name;
-            int pin,amount=0;
+            int pin,amount=1000; // Default values of the new Accout created for the user.
             Console.WriteLine("Enter your Name : ");
             name=Console.ReadLine();
-            Console.WriteLine("Enter a PIN number for your account : ");
-            pin=int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter a 4-Digit PIN number for your account : ");
+            while(true){ // Iterating untill the user enter a Unique PIN which is not present already in BankDetails.
+                pin=int.Parse(Console.ReadLine());
+                if(pins.Contains(pin)){ // Checking if the userpin is already present in the pins list.
+                    Console.WriteLine("PIN is unavilable! Please enter another PIN");
+                }
+                else{
+                    break;
+                }
+            }
             l.Add(new BankDetails(){Name=name, PIN=pin, AmountAvailable=amount});
-            AvailableOptions.Options options=new AvailableOptions.Options();
-            options.OptionsPrinter(l,pin);
+            pins.Add(pin); // Adding the newly created account pin to pins list.
+            Console.WriteLine("\nYour Account has been Created!".ToUpper());
+            AvailableOptions.Options options=new AvailableOptions.Options(); 
+            options.OptionsPrinter(l,pin,name); // Calling the Options class.
         }
     }
 }
