@@ -5,7 +5,7 @@ namespace WithDrawer
 {
     class WithDrawAmount
     {
-        public void WithDraw(List<BankDetails> Details,int Amount,int UserPin,string UserName) // To Withdraw the Amount.
+        public void WithDraw(List<BankDetails> Details,int Amount,int UserPin,int account) // To Withdraw the Amount.
         {
             foreach(BankDetails i in Details) // Traversing the Bank Details Dictionary.
             {
@@ -18,7 +18,7 @@ namespace WithDrawer
                     {
                         i.AmountAvailable-=Amount;
                         Log.TransactionLog log=new Log.TransactionLog();
-                        string description="WithDraw from "+UserName.ToUpper();
+                        string description="WithDraw from "+account;
                         log.Adder(description,Amount); // Adding the withdrawl into Transaction Log.
                         Console.WriteLine("\n --------------------------------------------");
                         Console.WriteLine("| "+Amount+" has been WithDrawn from your Account".ToUpper()+" |");

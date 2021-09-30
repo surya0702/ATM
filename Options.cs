@@ -5,7 +5,7 @@ namespace AvailableOptions
 {   
     public class Options
     {
-        public void OptionsPrinter(List<BankDetails> l,int userPin,string userName){
+        public void OptionsPrinter(List<BankDetails> l,int userPin,int userAccount){
             // Available options for the user.
             string[] options={"Deposit Amount","Withdraw Amount","Transfer Amount","Print Transaction History","LogOut"};
             Console.WriteLine("\n");
@@ -16,7 +16,7 @@ namespace AvailableOptions
             Console.WriteLine("\nPlease select an option");
             string userOption=Console.ReadLine();
             Chooser.Choose choice=new Chooser.Choose();
-            choice.ChooseOptions(userOption,l,userPin,userName); // Calling the Choice class.
+            choice.ChooseOptions(userOption,l,userPin,userAccount); // Calling the Choice class.
         }
     }
 }

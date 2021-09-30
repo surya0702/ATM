@@ -6,7 +6,7 @@ namespace Transferer
 {
     public class TransferAmount
     {
-        public void Transfer(List<BankDetails> Details,int pin,string name,string transfererName,int amount)
+        public void Transfer(List<BankDetails> Details,int pin,int account,int transfererAccountNo,int amount)
         {
             int availableAmount=0;
             foreach(BankDetails i in Details){ // Checking if the available amount is greaterthan or equals to transfer amount.
@@ -21,14 +21,14 @@ namespace Transferer
             }
             bool flag=true;
             foreach(BankDetails i in Details){ // Traversing the Bank Details Dictionary.
-                if(i.Name.ToLower()==transfererName.ToLower()){ // Checking if the transferer name is available.
+                if(i.AccountNo==transfererAccountNo){ // Checking if the transferer name is available.
                     i.AmountAvailable+=amount;
                     Log.TransactionLog log=new Log.TransactionLog();
-                    string description="Transfered from "+name.ToUpper()+" to "+transfererName.ToUpper();
+                    string description="Transfered from "+account+" to "+transfererAccountNo;
                     log.Adder(description,amount); // Adding the Transfer into Transaction Log.
                     flag=false;
                     Console.WriteLine("\n -----------------------------------");
-                    Console.WriteLine("| "+amount+ " has been transfered to ".ToUpper()+transfererName.ToUpper()+" |");
+                    Console.WriteLine("| "+amount+ " has been transfered to ".ToUpper()+transfererAccountNo+" |");
                     Console.WriteLine(" -----------------------------------\n");
                     break;
                 }

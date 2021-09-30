@@ -5,7 +5,7 @@ namespace Depositer
 {
     class DepositeAmount
     {
-        public void Deposit(List<BankDetails> Details,int Amount,int UserPin,string UserName) // Depositing Amount into the Account.
+        public void Deposit(List<BankDetails> Details,int Amount,int UserPin,int account) // Depositing Amount into the Account.
         {
             foreach(BankDetails i in Details)
             {
@@ -18,7 +18,7 @@ namespace Depositer
             Console.WriteLine("| "+ Amount +" has been Debitted in your Account |".ToUpper());
             Console.WriteLine(" -------------------------------------------\n");
             Log.TransactionLog log=new Log.TransactionLog();
-            string description="Deposited from "+UserName.ToUpper();
+            string description="Deposited from "+account;
             log.Adder(description,Amount); // Adding the Deposit
         }
     }
