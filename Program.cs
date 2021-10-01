@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Bank;
 
 class Program
     {
@@ -9,21 +10,22 @@ class Program
     static void Login(){
         Console.WriteLine("Enter your Account Number");
         int userAccount=int.Parse(Console.ReadLine());
-        if(Accounts.Contains(userAccount))//If PIN is present in pins List then display the options tab.
+        if(Accounts.Contains(userAccount))//If userAccount is present in Accounts List then display the options tab.
         {
             Console.WriteLine("Enter your 4-Digit PIN");
             int userPin=int.Parse(Console.ReadLine());
             if(pins.Contains(userPin)){
-                AvailableOptions.Options options=new AvailableOptions.Options();
+                Options options=new Options();
                 options.OptionsPrinter(l,userPin,userAccount);
             }
             else{
                 Console.WriteLine("\nPlease enter a valid PIN".ToUpper());
-            }
+            }   
         }
-        else // If PIN was not present in the pins List.
+        else // If userAccount was not present in the Accounts List.
         {
             Console.WriteLine("\nPlease enter a valid Account Number".ToUpper());
+            
         }
     }
 
@@ -46,8 +48,8 @@ class Program
                 Login(); // Loging in the User.
             }
             else if(userInput==2){ // Creating a new Account for the user.
-                Account.AccountCreator account=new Account.AccountCreator();
-                account.Creator(l,pins);
+                AccountCreator account=new AccountCreator();
+                account.Creator(l,pins,Accounts);
             }
             else if(userInput==3){ // Displaying the Bank Details and exiting from the user.
                 Console.WriteLine("\nBank Details :");

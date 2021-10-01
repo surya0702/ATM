@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AvailableOptions
+namespace Bank
 {   
     public class Options
     {
@@ -15,7 +15,7 @@ namespace AvailableOptions
             }
             Console.WriteLine("\nPlease select an option");
             string userOption=Console.ReadLine();
-            Chooser.Choose choice=new Chooser.Choose();
+            Choose choice=new Choose();
             choice.ChooseOptions(userOption,l,userPin,userAccount); // Calling the Choice class.
         }
     }

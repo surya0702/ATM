@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Log;
 
-namespace Transferer
+namespace Bank
 {
     public class TransferAmount
     {
@@ -10,7 +9,7 @@ namespace Transferer
         {
             int availableAmount=0;
             foreach(BankDetails i in Details){ // Checking if the available amount is greaterthan or equals to transfer amount.
-                if(i.PIN==pin && i.AmountAvailable>amount){
+                if(i.AccountNo==account && i.AmountAvailable>amount){
                     availableAmount=i.AmountAvailable;
                     i.AmountAvailable-=amount;// Available amount after transfer.
                 }
@@ -23,7 +22,7 @@ namespace Transferer
             foreach(BankDetails i in Details){ // Traversing the Bank Details Dictionary.
                 if(i.AccountNo==transfererAccountNo){ // Checking if the transferer name is available.
                     i.AmountAvailable+=amount;
-                    Log.TransactionLog log=new Log.TransactionLog();
+                    TransactionLog log=new TransactionLog();
                     string description="Transfered from "+account+" to "+transfererAccountNo;
                     log.Adder(description,amount); // Adding the Transfer into Transaction Log.
                     flag=false;

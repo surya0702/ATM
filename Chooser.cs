@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Chooser
+namespace Bank
 {   
     public class Choose
     {
@@ -11,13 +11,13 @@ namespace Chooser
             if(option=="1"){ // Depositing
                 Console.WriteLine("Enter the Amount you want to Deposit ");
                 int amount=int.Parse(Console.ReadLine());
-                Depositer.DepositeAmount deposite=new Depositer.DepositeAmount();
+                DepositeAmount deposite=new DepositeAmount();
                 deposite.Deposit(l,amount,pin,account); // Calling the Deposite Class
             }
             else if(option=="2"){ // Withdrawing
                 Console.WriteLine("Enter the Amount you want to WithDraw ");
                 int amount=int.Parse(Console.ReadLine());
-                WithDrawer.WithDrawAmount withDraw=new WithDrawer.WithDrawAmount();
+                WithDrawAmount withDraw=new WithDrawAmount();
                 withDraw.WithDraw(l,amount,pin,account); // Calling the Withdraw class
             }
             else if(option=="3"){ // Transfering
@@ -25,11 +25,11 @@ namespace Chooser
                 int transfererAccountNo=int.Parse(Console.ReadLine());
                 Console.WriteLine("Enter the Amount you would like to Transfer");
                 int amount=int.Parse(Console.ReadLine());
-                Transferer.TransferAmount transfer=new Transferer.TransferAmount();
+                TransferAmount transfer=new TransferAmount();
                 transfer.Transfer(l,pin,account,transfererAccountNo,amount); // Calling the Transfer Account.
             }
             else if(option=="4"){ // Transaction Log
-                Log.TransactionLog log=new Log.TransactionLog();
+                TransactionLog log=new TransactionLog();
                 log.LogPrinter();
             }
             else if(option=="5"){ // Exiting
@@ -37,7 +37,7 @@ namespace Chooser
                 flag=false;
             }
             if(flag){ // Iterating untill the user prompts to exit the account.
-                AvailableOptions.Options options=new AvailableOptions.Options();
+                Options options=new Options();
                 options.OptionsPrinter(l,pin,account); // Calling the options class.
             }
         }

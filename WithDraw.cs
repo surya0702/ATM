@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace WithDrawer
+namespace Bank
 {
     class WithDrawAmount
     {
@@ -17,7 +17,7 @@ namespace WithDrawer
                     else 
                     {
                         i.AmountAvailable-=Amount;
-                        Log.TransactionLog log=new Log.TransactionLog();
+                        TransactionLog log=new TransactionLog();
                         string description="WithDraw from "+account;
                         log.Adder(description,Amount); // Adding the withdrawl into Transaction Log.
                         Console.WriteLine("\n --------------------------------------------");

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Log
+namespace Bank
 {   
     public class TransactionLog
     {

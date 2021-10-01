@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Depositer
+namespace Bank
 {
     class DepositeAmount
     {
@@ -17,7 +17,7 @@ namespace Depositer
             Console.WriteLine("\n -------------------------------------------");
             Console.WriteLine("| "+ Amount +" has been Debitted in your Account |".ToUpper());
             Console.WriteLine(" -------------------------------------------\n");
-            Log.TransactionLog log=new Log.TransactionLog();
+            TransactionLog log=new TransactionLog();
             string description="Deposited from "+account;
             log.Adder(description,Amount); // Adding the Deposit
         }
