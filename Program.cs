@@ -7,27 +7,6 @@ class Program
     public static List<BankDetails> l=new List<BankDetails>(); // List of BankDetails of Users.
     public static List<int> pins=new List<int>(){1234,5678}; // List of PINs available in the BankDetails.
     public static List<int> Accounts=new List<int>(){12345678,23456789};
-    static void Login(){
-        Console.WriteLine("Enter your Account Number");
-        int userAccount=int.Parse(Console.ReadLine());
-        if(Accounts.Contains(userAccount))//If userAccount is present in Accounts List then display the options tab.
-        {
-            Console.WriteLine("Enter your 4-Digit PIN");
-            int userPin=int.Parse(Console.ReadLine());
-            if(pins.Contains(userPin)){
-                Options options=new Options();
-                options.OptionsPrinter(l,userPin,userAccount);
-            }
-            else{
-                Console.WriteLine("\nPlease enter a valid PIN".ToUpper());
-            }   
-        }
-        else // If userAccount was not present in the Accounts List.
-        {
-            Console.WriteLine("\nPlease enter a valid Account Number".ToUpper());
-            
-        }
-    }
 
     static void Main(string[] args)
     {
@@ -45,7 +24,8 @@ class Program
             Console.WriteLine("\nEnter the number corresponding to your Choise");
             int userInput=int.Parse(Console.ReadLine());
             if(userInput==1){
-                Login(); // Loging in the User.
+                Logger log=new Logger();
+                log.Login(l,Accounts,pins); // Loging in the User.
             }
             else if(userInput==2){ // Creating a new Account for the user.
                 AccountCreator account=new AccountCreator();
